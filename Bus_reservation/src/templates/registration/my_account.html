@@ -1,0 +1,77 @@
+{% extends "bus_resrv_system.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="intro-header">
+        <div class="container">
+		
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                   	<div class=" OpacblackLayer">
+                         <h2>My Account</h2>
+                        <h3>Welcome, {{ name|capfirst }}!</h3>
+                        <hr class="intro-divider">
+						<fieldset class="my_account">
+						    <h4>My Tickets</h4>
+						    <hr class="intro-divider">
+						    {% if tickets%}
+						    <table class="table">
+								   <thead>
+								      <tr>
+								       <td>Booking id</td>
+								        <td>Depature date</td>
+								        <td>Booked on</td>
+								        <td>Ticket Status</td>
+								        
+								      </tr>
+								    </thead>
+							{%endif%}	  
+						    {% for ticket in tickets %}
+							 <tbody>
+								 <tr bgcolor="#FFFFFF" style="color:black">
+								 	<td> <a href="{%url 'account:ticket_details' ticket_id=ticket.id%}">BUSBK#00{{ ticket.id }}</a><br/>
+								 	<a href="{%url 'account:ticket_details' ticket_id=ticket.id%}" class="btn btn-primary">View Ticket</a>
+								 	
+								 	</td>
+								 	<td>{{ ticket.booking_date|date }}</td>
+								 	<td>{{ ticket.date|date }}</td>
+								 	<td>
+								 	{% if ticket.status == 'P' %}
+								 	<div class="alert alert-warning"> Pending </div>
+								 	{%else%}
+								 	<div class="alert alert-success"> Confirm </div>
+								 	{%endif%}
+								 	
+								 	</td>
+								 </tr>
+							 </tbody>
+							 						 
+						        <br />
+						    {% empty %}
+						        You have no bookings...Book your first ride!!<br/><br/>
+						         <a href="{% url 'bus:searchBus' %}" class="btn btn-primary">Book a Ticket</a>
+						    {% endfor %}
+						    </table>
+						</fieldset>
+						
+						<br />
+						<hr class="intro-divider">
+						<fieldset class="my_account">
+						    <h4>Account Settings</h4>
+						    <hr class="intro-divider">
+						    <a href="{% url 'django.contrib.auth.views.password_change' %}" class="btn btn-primary">Change
+						Password</a>
+						</fieldset>
+						<hr class="intro-divider">
+                    </div>
+                    </div>
+                </div>
+            </div>
+		
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+    
+  {% endblock %}

@@ -1,0 +1,143 @@
+{% extends "bus_resrv_system.html" %}
+{% load staticfiles %}
+{% block content %}
+ <div class="intro-search">
+        <div class="container">
+		
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+							 <h2 class="OpacblackLayer">Online Bus Tickets Booking</h2>
+						 	 <h3 > Search buses </h3>
+						 	 <hr class="intro-divider">
+						 	 <div class="md-5 col-md-offset-2 column " >
+								<form method='POST'action="." >
+								{% csrf_token %}
+									<div class="form-group col-xs-5">
+								     	 <label for="area_from">From:</label>
+								      	 <input type="text" name="area_from" placeholder="Enter a city/area you want to depart from." id="area_from"  class="form-control input-sm "/>
+								      	 <input type="hidden" name="area_from_id" id="area_from_id"  value="1"  />
+								      	 
+								    </div>
+								    <div class="form-group col-xs-5">
+								      	<label for="area_to">To:</label>
+								     	<input type="text" name="area_to" placeholder="Enter a city/area you want to arrive to" id="area_to"  class="form-control input-sm"/>
+								     	<input type="hidden" name="area_to_id" id="area_to_id" value="1" />
+								     	
+								    </div>
+									<div class="form-group col-xs-10">
+										<input type="submit" name="search_bus" value="Search Buses"  class="btn btn-primary" />
+									 </div>
+								</form>
+						 	 </div>
+						 <div>
+						 {%if bus_info_list %}
+						  <table class="table">
+								   <thead>
+								      <tr>
+								       <td>Bus</td>
+								        <td>Travels</td>
+								        <td>Type</td>
+								        <td>Fare</td>
+								        <td>Timings</td>
+								        <td>Description</td>
+								        <td></td>
+								      </tr>
+								    </thead>
+								    <tbody>
+								     {%for bus_info in bus_info_list %}
+								     <tr bgcolor="#FFFFFF" style="color:black">
+								    	<td><a href="#" data-toggle="modal" data-target="#myModal{{bus_info.id}}"><img src="{% static ''%}{{bus_info.image}}" width=70 /></a>
+								    			<!-- Modal -->
+												  <div class="modal fade" id="myModal{{bus_info.id}}" role="dialog">
+												    <div class="modal-dialog">
+												    
+												      <!-- Modal content-->
+												      <div class="modal-content">
+												        <div class="modal-header">
+												          <button type="button" class="close" data-dismiss="modal">&times;</button>
+												          <h4 class="modal-title">{{bus_info.bus_name}}</h4>
+												        </div>
+												        <div class="modal-body">
+												          <p><img src="{% static ''%}{{bus_info.image}}"  width=400 /></p>
+												        </div>
+												        <div class="modal-footer">
+												          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												        </div>
+												      </div>  
+												    </div>
+												  </div>								    	
+								    	</td>
+								        <td> {{bus_info.bus_name}}</td>
+								        <td>{{bus_info.type}}</td>
+								        <td>Rs {{bus_info.fare|floatformat}}/Per person</td> 
+								        <td>
+								       	    Depart: {{bus_info.depature_time}}<br/>
+								        	Arrive : {{bus_info.arriving_time}} 
+								        	
+								        </td>
+								        <td>{{bus_info.bus_description|slice:":60"}}...<br/>
+								       			<a href="#" data-toggle="modal" data-target="#desc{{bus_info.id}}"><small>Read more</small></a>
+									   				<!-- Modal description	 -->
+													  <div class="modal fade" id="desc{{bus_info.id}}" role="dialog">
+													    <div class="modal-dialog">
+													    
+													      <!-- Modal content-->
+													      <div class="modal-content">
+													        <div class="modal-header">
+													          <button type="button" class="close" data-dismiss="modal">&times;</button>
+													          <h4 class="modal-title">{{bus_info.bus_name}}</h4>
+													        </div>
+													        <div class="modal-body">
+													          <p>{{bus_info.bus_description}}</p>
+													        </div>
+													        <div class="modal-footer">
+													          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+													        </div>
+													      </div>
+													    </div>
+													  </div>				
+								        </td>
+								         <td><a href="{% url 'bookTicket:bookTicket' bus_id=bus_info.id %}" class="btn btn-success">Book Now</a></td>
+								      </tr>
+									{%endfor%}
+								      
+								    </tbody>
+								  </table> 
+							
+						 {%endif%}
+						 </div>
+        
+                    </div>
+                </div>
+            </div>
+		
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+  
+    
+<script>
+ $(function() {
+    $( "#area_from" ).autocomplete({
+      source: '{% url 'bus:pickareas' %}',
+      select: function( event, ui ) {
+      	$("#area_from_id").val(ui.item.id);
+      }
+    });
+  });
+
+ $(function() {
+    $( "#area_to" ).autocomplete({
+      source: '{% url 'bus:dropareas' %}',
+      select: function( event, ui ) {
+      	$("#area_to_id").val(ui.item.id);
+      }
+    });
+  });
+
+</script>  
+    
+{% endblock %}

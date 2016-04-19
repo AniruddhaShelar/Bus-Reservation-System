@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<title>{% block title %}{% if page_title %}{{ page_title }} - {% endif %} Bus Reservation System{% endblock %}</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{%static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{%static 'css/landing-page.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{%static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{%static 'font-awesome/css/font-google.css' %}" rel="stylesheet" type="text/css">
+    
+ 	<!-- Autocomplete css-->
+ 	 <link rel="stylesheet" href="{%static 'css/jquery-ui.css' %}">
+ 	   
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+   
+    <![endif]-->
+    
+       <!-- jQuery -->
+   	   <script src="{%static 'js/jquery.js' %}"></script>
+   	   
+   	   <!-- Autocomplete Js-->
+       <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  	   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+ 	   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
+ 	   
+  	   <script src="{%static 'js/jquery-1.10.2.js' %}"></script>
+ 	   <script src="{%static 'js/jquery-ui.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{%static 'js/bootstrap.min.js' %}"></script>
+
+</head>
+<body>
+     {% block site_wrapper %}{% endblock %}
+</body>
+</html>

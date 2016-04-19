@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% block site_wrapper %}
+ <!-- Navigation -->
+ {% include 'tags/navigation.html' %}
+ <!--end navigation-->
+ 
+    <!-- Container -->
+     {% block content %}
+    <div class="intro-header">
+        <div class="container">
+		
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                   
+                        <h1>Bus Reservation System</h1>
+                        <h3>Where the journey begins!!!</h3>
+                        <hr class="intro-divider">
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="{% url 'bus:searchBus' %}" class="btn btn-default btn-lg"><i class="fa fa-bus fa-fw"></i> <span class="network-name">Book a ticket</span></a>
+                            </li>
+
+                        </ul>
+                    
+                    </div>
+                </div>
+            </div>
+		
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+ {% endblock %}
+    <!-- Page Content -->
+
+	<a name="about"></a>
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Online ticket booking system:<br>No 'Line' on Online</h2>
+                    <p class="lead">Bus Reservation System is designed to automate the online ticket purchasing through an easy online bus booking system.With the bus ticket reservation system you can manage reservations, clients data and passengers lists.</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="{% static 'images/booking_page/abtus2.jpg' %}" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">It's Simple!!!<br><small>Search for buses-Book your ticket-Board your bus</small> </h2>
+                    <p class="lead">Making your life easier with bus fare comparisions,searching buses and making your journey the safe and sound.</p>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <img class="img-responsive" width="80%" hieght="40%" src="{% static 'images/booking_page/abtus.png' %}" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+    <div class="content-section-a">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Contact us :</h2>
+                    <p class="lead">
+                   		 <strong>Phone Contacts :</strong><br/>
+							Mumbai : +91-022-345-345<br/>
+							Pune : +91-022-345-346<br/>
+                    		<strong>E-mail Contacts :</strong><br/>
+							E-mail : support [AT] busreservation.in
+					</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="{% static 'images/booking_page/contus.JPG' %}" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+	<a  name="contact"></a>
+    <div class="banner">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Connect to Bus Reservation:</h2>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="list-inline banner-social-buttons">
+                        <li>
+                            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.banner -->
+
+    <!-- Footer -->
+    {%include 'tags/footer.html' %}
+	<!-- End of footer -->
+
+{% endblock %}

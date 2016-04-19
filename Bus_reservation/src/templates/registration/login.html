@@ -1,0 +1,54 @@
+{% extends "bus_resrv_system.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="intro-header">
+        <div class="container">
+		
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                   
+                        <h1>Login</h1>
+                        <h3>Where the journey begins!!!</h3>
+                        <hr class="intro-divider">
+                     	<div class="md-5 col-md-offset-4 column">	
+						<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+						{%csrf_token%}
+							{% if form.errors %}
+									<div class="row">
+										<div class="col-xs-6 alert alert-danger">
+										   You entered an invalid username or password
+										    </div>
+									 </div>
+							{% endif %}
+								<div class="row">
+								    <div class="form-group col-xs-6">
+								    <label for="id_username">{{ form.username.label_tag }}</label>
+								    <input id="id_username" maxlength="254" name="username" type="text" placeholder="Please enter your username" class="form-control input-sm ">
+								    </div>
+								  </div>
+								  <div class="row">
+								    <div class="form-group col-xs-6">
+								    <label for="phone">{{ form.password.label_tag }}</label>
+								    <input id="id_password" name="password" type="password" placeholder="Please enter yourpassword" class="form-control input-sm ">
+								    </div>
+								  </div>
+								  <div class="row">
+								    <div class="form-group col-xs-6">
+								     <input type="submit" value="Login" class="btn btn-primary" />
+								    </div>
+								  </div>
+						<input type="hidden" name="next" value="{{ next }}" />
+						</form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+		
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+    
+  {% endblock %}

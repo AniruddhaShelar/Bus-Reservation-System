@@ -1,0 +1,123 @@
+{% extends "bus_resrv_system.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="intro-header">
+        <div class="container">
+		
+            <div class="row">
+                <div class="col-lg-12">
+                  <div class="intro-message ">
+                   	<div class=" OpacblackLayer">
+                        <h2>{{bus_info.bus_name}}</h2>
+                        <h3>Book a ticket</h3>
+                        <hr class="intro-divider">
+                        <div class="row">
+						  <div class="col-xs-6">
+						  <table class="table table-bordered" >
+						  <tr>
+							  <td>
+							   <img src="{% static ''%}{{bus_info.image}}" width=360 />
+							  </td>
+						  </tr>
+						  <tr bgcolor="#FFFFFF" style="color:black">	
+							  <td>
+							  Fare : &nbsp; Rs {{bus_info.fare|floatformat}}/Per person
+							  </td>
+						  </tr>
+						  <tr bgcolor="#FFFFFF" style="color:black">
+							  <td>
+							   Depart:&nbsp; &nbsp;&nbsp;{{bus_info.depature_time}}<br/>
+								Arrive :&nbsp;&nbsp;&nbsp;{{bus_info.arriving_time}} 
+							  </td>
+						  </tr>
+						  <tr bgcolor="#FFFFFF" style="color:black">
+							  <td>
+							  Type:&nbsp;&nbsp; {{bus_info.type}}
+							  </td>
+						  </tr>
+						  <tr bgcolor="#FFFFFF" style="color:black">
+							  <td>
+							   {{bus_info.bus_description|slice:":150"}}
+							  </td>
+						  </tr>
+						  
+						  </table>
+						</div>
+						  <div class="col-xs-6">
+						  <form method='POST'action=".">
+								{% csrf_token %}
+								
+								 <div class="row">
+									<div class="form-group col-xs-9">
+								     	 <label for="email">Email:</label>
+								      	 <input type="email" name="email" placeholder="Please enter your email" id="email"  class="form-control input-sm " required/>
+								      	
+								      	 
+								    </div>
+								 </div>
+								 <div class="row">
+								    <div class="form-group col-xs-9">
+								      	<label for="phone">Phone no.:</label>
+								     	<input type="text" name="phone" pattern="[7-9]{1}[0-9]{9}" placeholder="Please enter your phone no." id="phone"  class="form-control input-sm" required/>
+								     	
+								    </div>
+								  </div>
+								  <div class="row">
+								    <div class="form-group col-xs-9">
+								      	<label for="bookDate">Booking Date</label>
+        								<input class="min-today form-control input-sm" id="min" type="date" name="book_date" placeholder="YYYY-MM-DD" data-date-split-input="true" required/>								     	
+								    </div>
+								  </div>
+								  <div class="row">
+									<div class="form-group col-xs-9">
+								     	 <label for="noofseats">No of seats:</label>
+								      	 <input type="number" min="1" max="{{bus_info.no_of_seats}}" name="noofseats" placeholder="Please enter no of seats" id="noofseats"  class="form-control input-sm " required/>
+								      	 <input type="hidden" name="fare_bus" value="{{bus_info.fare}}"/>
+								    </div>
+								 </div>
+								  <div class="row">
+									<div class="form-group col-xs-9">
+										<input type="submit" name="bookticket" value="Book Ticket"  class="btn btn-primary" />
+									 </div>
+								</div>
+								</form>
+								<div class="row">
+									<div class=" col-xs-9">
+										 <table class="table table-bordered" >
+										  <tr>
+											  <td>
+											   Terms & Conditions*
+											  <p>1. Bus Reservation System* is an online marketplace. It does not operate bus services of its own. In order to provide a comprehensive choice of bus operators, departure times and prices to customers, it has tied up with many bus operators.</p>											
+											  <p>2. Issuing a valid ticket</p>
+											  <p>3. Seat numbers wil be given at the time of boarding the bus</p>
+										  
+											  </td>
+										  </tr>
+										 </table>
+									 </div>
+								</div>
+								 </div>
+						  
+						  </div>
+						  
+						  
+						</div>
+                    
+                    </div>
+                </div>
+            </div>
+		
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+    <script>
+    $(function(){
+    $('[type="date"].min-today').prop('min', function(){
+        return new Date().toJSON().split('T')[0];
+    });
+});
+    </script>
+    
+  {% endblock %}

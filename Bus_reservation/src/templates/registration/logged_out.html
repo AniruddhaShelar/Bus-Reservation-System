@@ -1,0 +1,27 @@
+{% extends "bus_resrv_system.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="intro-header">
+        <div class="container">
+		
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                   
+                        <h1>You've Logged Out!</h1>
+                        <h3>Thankyou..see you soon!!!</h3>
+                        <hr class="intro-divider">
+                        <h4>Plan your next trip</h4>
+                         <a href="{% url 'bus:searchBus' %}" class="btn btn-primary">Book a Ticket</a>
+                    
+                    </div>
+                </div>
+            </div>
+		
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+    
+  {% endblock %}

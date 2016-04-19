@@ -1,0 +1,82 @@
+{% extends "bus_resrv_system.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="intro-header">
+        <div class="container">
+		
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                   	<div class=" OpacblackLayer">
+                       <h2>BUSBK#00{{ tickets.id }}</h2>
+                        <h3>{{ name|capfirst }} here is your ticket!  &nbsp;&nbsp;<button onclick="window.print();" class="btn btn-primary">Print your ticket</button>
+                        </h3>
+                        
+                        <hr class="intro-divider">
+                       <div class="bgticket">
+                        <table class="table table-bordered">
+                        	<tr>
+                        		<td>
+                        		<img src="{% static 'images/homepage/icon1.png'%}" width=70 /><br/>
+                        		</td>
+                        		<td>
+                        		Destination :<br/><br/> 
+                        		Departure :
+                        		</td>
+                        		<td>
+                        		{{bus_arrive.area_name}}<br/><br/> 
+                        		{{bus_depart.area_name}}
+                        		</td>
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        		Travels : {{bus_info.bus_name}}<br/>
+                        		<small>Rs {{bus_info.fare|floatformat}}/Per person</small>
+                        		</td>
+                        		
+                        		<td>
+                        		Booking Date   :  <br/><br/>
+                        		Departure Date :
+                        		</td>
+                        		<td>
+                        		{{tickets.date|date}} <br/><br/>
+                        		{{tickets.booking_date|date}}
+                        		</td>
+                        		
+                        	</tr>
+                        	<tr>
+                        		<td>
+                        		Type :  {{bus_info.type}}<br/>
+                        		Depart: {{bus_info.depature_time}}<br/>
+								Arrive : {{bus_info.arriving_time}}<br/>
+								<small>*Your booking id:BUSBK#00{{ tickets.id }}</small>
+                        		</td>
+                        		<td >
+                        		Email :<br/>
+                        		Phone :<br/>
+                        		Number of passengers : <br/>
+                        		Total Fare : 
+                        		</td>
+                        		<td>
+                        		{{tickets.email}}<br/>
+                        		{{tickets.phone}}<br/>
+                        		{{tickets.booking_seats_num}}<br/>
+                        		Rs {{tickets.total|floatformat}}
+                        		</td>
+                        		
+                        	</tr>
+                        </table>
+                        <small>*T&C Apply : Please carry your ticket while boarding the bus. Seats will be issue on the time of boarding. Your booking id : BUSBK#00{{ tickets.id }}.</small>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+		
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+    
+  {% endblock %}
