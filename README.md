@@ -13,14 +13,14 @@ Bus Reservation System is a preety basic system developed in Django,MySQL,Python
 	- Dialogue box will appear.Click on Environment Variables button
 	- Find Path variable in System variables box
 	- Select Path varible and click on edit button
-	- copy paste the followin at the end 
+	- copy paste the followin at the end    
 C:\Python34;C:\Python34\python.exe;C:\Python34\Scripts\;C:\Python34\Lib\site-packages\django\bin;C:\xampp\mysql\bin;
 
 4.Go to start n type xampp
   	- open xampp control and start Apache and MySQL
 	- Click on MySQL admin 
 	- create a database named bus_reservation
-	- Go into that Database bus_reservation
+	- Go into the Database 'bus_reservation'
 	- Import the bus_reservation.sql file into the database
 
 5.Copy paste the whole project file  Bus_reservation system to desktop
@@ -32,7 +32,7 @@ Open Cmd
  - cd Desktop
  - cd Bus_reservation
  - .\Scripts\activate
- -  pip insatall Django
+ -  pip install Django
  -  pip install mysqlclient==1.3.6
  - cd src
  - python manage.py runserver
