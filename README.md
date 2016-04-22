@@ -12,8 +12,8 @@ Bus Reservation System is a preety basic system developed in Django,MySQL,Python
 	- Click on Advance System settings 
 	- Dialogue box will appear.Click on Environment Variables button
 	- Find Path variable in System variables box
-	- Select Path varible and click on edit button
-	- copy paste the followin at the end    
+	- Select Path variable and click on edit button
+	- copy paste the following at the end    
 C:\Python34;C:\Python34\python.exe;C:\Python34\Scripts\;C:\Python34\Lib\site-packages\django\bin;C:\xampp\mysql\bin;
 
 4.Go to start n type xampp
