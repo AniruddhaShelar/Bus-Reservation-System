@@ -38,7 +38,7 @@ def my_account(request, template_name="registration/my_account.html"):
 @login_required
 def ticket_details(request,ticket_id,template_name="registration/ticketdetails.html"):
     page_title = 'Ticket details'
-    tickets = get_object_or_404(bookAticket,id=ticket_id)
+    tickets = get_object_or_404(bookAticket,id=ticket_id,user=request.user)
     bus_info = get_object_or_404(BusInfo,id=tickets.bus_id)
     bus_arrive = get_object_or_404(BusDropArea,id=bus_info.depature_at_id)
     bus_depart = get_object_or_404(BusPickArea,id=bus_info.arriving_from_id)
